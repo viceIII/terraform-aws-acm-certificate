@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "cert" {
-  domain_name       = "${main_domain}"
+  domain_name       = "${var.main_domain}"
   validation_method = "DNS"
 
   // list of domains that should be SANs in the issued certificate

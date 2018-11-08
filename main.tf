@@ -31,3 +31,7 @@ resource "aws_route53_record" "validation_record" {
   ttl     = "30"
   records = ["${lookup(aws_acm_certificate.cert.domain_validation_options[count.index], "resource_record_value")}"]
 }
+
+output "certificate_arn" {
+  value = "${aws_acm_certificate.cert.arn}"
+}

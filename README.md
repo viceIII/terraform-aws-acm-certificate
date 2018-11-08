@@ -4,7 +4,7 @@ Terraform module which creates ACM certificate within validation over Route53 CN
 
 ```
 module "aws-acm-certificate-main" {
-  source = "/Users/deman/projects/terraform-modules/aws-acm-certificate"
+  source = "viceIII/acm-certificate/aws"
 
   # Certificate main domain name
   main_domain = "example.com"

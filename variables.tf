@@ -1,10 +1,15 @@
 # Certificate main domain name
 variable "main_domain" {
-  type = "string"
+  type = string
 }
 
 # map of Route53 domain names as keys,
 # and list of domains witch you want to validate and include in certificate
 variable "domains" {
-  type = "map"
+  type = map(list(string))
 }
+
+variable "ignore_changes" {
+  type = list(string)
+}
+

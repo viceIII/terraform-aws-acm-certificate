@@ -9,7 +9,3 @@ variable "domains" {
   type = map(list(string))
 }
 
-variable "ignore_changes" {
-  type = list(string)
-}
-

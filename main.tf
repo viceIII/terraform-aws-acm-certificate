@@ -22,13 +22,13 @@ data "aws_route53_zone" "root" {
 
 
 resource "aws_route53_record" "validation_record" {
-  for_each = transpose(var.domains)
-
-  ttl     = "30"
-  zone_id = data.aws_route53_zone.root[each.value[0]].zone_id
-  name    = [for x in aws_acm_certificate.cert.domain_validation_options : x.resource_record_name if x.domain_name == each.key][0]
-  type    = [for x in aws_acm_certificate.cert.domain_validation_options : x.resource_record_type if x.domain_name == each.key][0]
-  records = [for x in aws_acm_certificate.cert.domain_validation_options : x.resource_record_value if x.domain_name == each.key]
+  for_each        = transpose(var.domains)
+  allow_overwrite = true
+  ttl             = "30"
+  zone_id         = data.aws_route53_zone.root[each.value[0]].zone_id
+  name            = [for x in aws_acm_certificate.cert.domain_validation_options : x.resource_record_name if x.domain_name == each.key][0]
+  type            = [for x in aws_acm_certificate.cert.domain_validation_options : x.resource_record_type if x.domain_name == each.key][0]
+  records         = [for x in aws_acm_certificate.cert.domain_validation_options : x.resource_record_value if x.domain_name == each.key]
 }
 
 output "certificate_arn" {

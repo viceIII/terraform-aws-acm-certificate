@@ -11,9 +11,9 @@ module "aws-acm-certificate-main" {
 
   # Additional names
   # map of Route53 domain names as keys,
-  # and list of domains witch you want to validate and include in certificate  
+  # and list of domains witch you want to validate and include in certificate
   domains = {
-    "example.com"         = ["example.com", "www.example.com"]
+    "example.com"     = ["example.com", "www.example.com"]
     "dev.example.com" = ["*.dev.example.com"]
   }
 }
